@@ -18,8 +18,7 @@ export default [
             tailwindcss: tailwindPlugin
         },
         rules: {
-            "react/react-in-jsx-scope": "off",
-            "react/prop-types": "off",
+
             "no-unused-vars": "warn",
             "no-console": "warn",
             quotes: ["error", "single"],
@@ -31,6 +30,10 @@ export default [
                 "error",
                 {code: 120, ignoreComments: true, ignoreStrings: true},
             ],
+            // react rules
+            "react/react-in-jsx-scope": "off",
+            "react/prop-types": "off",
+            "react/jsx-wrap-multilines": ["error", {return: "parens-new-line"}],
             // tailwindcss rules
             "tailwindcss/classnames-order": "warn",
             "tailwindcss/enforces-negative-arbitrary-values": "warn",
