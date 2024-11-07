@@ -18,7 +18,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
   };
 
   return (
-    <div className="flex items-center justify-center gap-2 p-4">
+    <div className="flex flex-wrap items-center justify-center gap-2 p-4">
 
       <button
         className="rounded bg-gray-200 px-4 py-2 disabled:opacity-50"
