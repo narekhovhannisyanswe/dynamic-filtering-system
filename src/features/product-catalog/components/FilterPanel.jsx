@@ -4,7 +4,7 @@ import { SORT_OPTIONS } from '@/features/product-catalog/constants';
 import useDebounce from '@/features/product-catalog/hooks/useDebounce';
 
 const FilterInput = memo(
-  function FilterInput({ label, value, onChange, type = 'text', id }) {
+  function FilterInput({ label, value, onChange, type = 'text', id, dataTestId = '' }) {
     const [localValue, setLocalValue] = useState(value);
     const debouncedValue = useDebounce(localValue, 500);
 
@@ -34,6 +34,7 @@ const FilterInput = memo(
           type={type}
           name={id}
           id={id}
+          data-testid={dataTestId}
         />
       </div>
     );
@@ -50,6 +51,7 @@ const SortSelect = memo(function SortSelect({ value, onChange }) {
         className="flex-1 rounded p-[2px] text-xs outline-none"
         name="sort-by"
         id="sort-by"
+        data-testid="sort-select"
       >
         <option value=""></option>
         {Object.values(SORT_OPTIONS).map(option => (
@@ -77,12 +79,12 @@ export default function FilterPanel() {
   const { name, category, brand, minRating, minPrice, maxPrice } = filters;
 
   const filterInputs = [
-    { label: 'Name', value: name, onChange: handleNameChange, id: 'search-by-name' },
-    { label: 'Brand', value: brand, onChange: handleBrandChange, id: 'search-by-brand' },
-    { label: 'Category', value: category, onChange: handleCategoryChange, id: 'search-by-category' },
-    { label: 'Min Rate', value: minRating, onChange: handleMinRatingChange, type: 'number', id: 'min-rating' },
-    { label: 'Min Price', value: minPrice, onChange: handleMinPriceChange, type: 'number', id: 'min-price' },
-    { label: 'Max Price', value: maxPrice, onChange: handleMaxPriceChange, type: 'number', id: 'max-price' },
+    { label: 'Name', value: name, onChange: handleNameChange, id: 'search-by-name', dataTestId: 'name-input' },
+    { label: 'Brand', value: brand, onChange: handleBrandChange, id: 'search-by-brand', dataTestId: 'brand-input'  },
+    { label: 'Category', value: category, onChange: handleCategoryChange, id: 'search-by-category', dataTestId: 'category-input' },
+    { label: 'Min Rate', value: minRating, onChange: handleMinRatingChange, type: 'number', id: 'min-rating', dataTestId: 'rating-input'  },
+    { label: 'Min Price', value: minPrice, onChange: handleMinPriceChange, type: 'number', id: 'min-price', dataTestId: 'min-price'  },
+    { label: 'Max Price', value: maxPrice, onChange: handleMaxPriceChange, type: 'number', id: 'max-price', dataTestId: 'max-price'  },
   ];
 
   return (
@@ -95,7 +97,7 @@ export default function FilterPanel() {
 
       <SortSelect value={sortBy} onChange={updateSortBy}/>
         
-      <button className="rounded border bg-blue-900 p-2 font-bold text-white" onClick={resetAll}>
+      <button className="rounded border bg-blue-900 p-2 font-bold text-white" onClick={resetAll} data-testid="reset-all">
                 Reset All
       </button>
     </div>
