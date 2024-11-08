@@ -102,7 +102,7 @@ export function generateMockProducts(count) {
       name,
       category,
       brand: brands[Math.floor(Math.random() * brands.length)],
-      price: Number((Math.random() * 1000 + 50).toFixed(2)),
+      price: Number((Math.random() * 950 + 50).toFixed(2)),
       rating: Number((Math.random() * 9 + 1).toFixed(1)),
       imageUrl: `https://picsum.photos/400?random=${i}`,
     };
