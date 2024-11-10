@@ -12,7 +12,7 @@ export default [
     { languageOptions: { globals: { ...globals.browser, ...globals.node, ...globals.jest } } },
     {
         files: ["src/**/*.{js,mjs,cjs,jsx}"],
-        ignores: ["**/node_moules/**", "**/.next/**", "**/dist/**", "**/build/**"],
+        ignores: ["**/node_modules/**", "**/.next/**", "**/dist/**", "**/build/**"],
         plugins: {
             "@next/next": nextPlugin,
             react: pluginReact,
